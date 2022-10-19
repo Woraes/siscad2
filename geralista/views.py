@@ -40,7 +40,7 @@ import pandas as pd
 import urllib.parse
 from django.views.generic import TemplateView
 from django.db import models
-from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
 
 
 
@@ -188,7 +188,7 @@ class AcompanhaExe(LoginRequiredMixin, TemplateView):
 def Waths(request):
     
         
-    navegador = webdriver.Chrome(ChromeDriverManager().install())
+    navegador = webdriver.Chrome()
 
 #pagina a ser aberta
     navegador.get('https://web.whatsapp.com')
