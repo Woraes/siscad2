@@ -1,0 +1,34 @@
+{% extends 'pages/modelo-sis.html' %}
+
+
+
+{%block conteudo%}
+
+<div class="card">
+    <div class="card-header"><h2>Olá,
+      {% if  user.perfil.nome %}
+      {{user.perfil.nome}}  {{ context }} bem Vindo ao Sistema de Cadastros </h2></div>
+      <div class="card-body">
+        <p> {{pessoamodel.nome}}</p>
+  
+  
+        <p class="card-text"><h4>Hoje é Dia {{data}}  </h4></p>
+     
+        <a href="" class="btn btn-primary"><i class="bi bi-file-earmark-plus-fill"> Novo Cadastro</i></a>
+        
+      
+        <div class="card">
+          <div class="card-header">
+              <p></p>
+          </div>
+      <!-- Insira essa tag para renderizar esse widget -->
+        {% comment %} <iframe   src="https://painelfuncional.herokuapp.com/" frameborder="-10"></iframe> {% endcomment %}
+      </div>
+      </div>
+      </div>
+  </div>
+      {% else %}
+      ({{user.username}})  {{ context }} Você Prescisa Completar seu Cadastro Acesse <h4><a href="{%url 'perfil_update'%}">Meus Dados</a></h4> </h2></div>
+      {% endif %}
+      
+ {% endblock %}

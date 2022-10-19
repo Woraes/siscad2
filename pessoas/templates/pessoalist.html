@@ -1,0 +1,101 @@
+{% extends 'pages/modelo-sis.html' %}
+{% load static %}
+
+{%block titulo%} 
+<title>Lista de Pessoas </title>
+{% endblock %}
+
+
+
+{%block conteudo%}
+<div class="card">
+    <div class="card-header"><h2>Olá, Bem Vindo  {{user.username}}</h2></div>
+    <div class="card-body">
+      <p class="card-text"><h4>Lista de Pessoas</h4></p>
+   
+      <a href="{% url 'pessoa_new'%}" class="btn btn-primary"><i class="bi bi-file-earmark-plus-fill"></i> Cadastrar</a>
+      <a href="{% url 'pessoa_new'%}" class="btn btn-primary"><i class="bi bi-file-earmark-plus-fill"></i> Gerar Lista</a>
+  
+    </div>
+
+    <div class="table-responsive-lg">
+        <table class="table table-striped" id='tabela'>
+            {% comment %} #necessario mudar as tabelas para thead {% endcomment %}
+            <thead>
+                <tr>
+                    <th>Nome </th>
+                    <th>Telefone</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {%for pessoa in object_list %}
+                <tr>
+                    <td>{{pessoa.nome}}</td>
+                    <td><strong>{{pessoa.telefone}}</strong></td>
+                    <td>
+                        <a href="{% url 'pessoa_update' pessoa.id %}"class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                        <a href="{% url 'pessoa_delete' pessoa.id%}"class="btn btn-danger" ><i class="bi bi-trash"></i></a>                 
+                    </td>
+                    
+            </tr>
+            {%empty%}
+            <tr>
+                <td colspan='3'>Nenhum Pessoa Registrada</td>
+            </tr>
+
+            {%endfor%}
+        </tbody>
+    </table>
+
+</div> 
+
+ 
+{% endblock %}    
+
+
+
+
+{% block scripts %}
+        <script>
+    
+    
+    
+            $(document).ready(function () {
+                    $('#tabela').DataTable({
+            responsive: true,
+            // "bSort": false,
+            "aaSorting": [],
+            "pageLength": 10,
+            "language": {
+                "decimal": "",
+                "emptyTable": "Sem dados disponíveis",
+                "info": "",
+                "infoEmpty": "Mostrando de 0 até 0 de 0 registos",
+                "infoFiltered": "(filtrado de MAX registos no total)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "",
+                "loadingRecords": "A carregar dados...",
+                "processing": "A processar...",
+                "search": "Procurar:",
+                "zeroRecords": "Não foram encontrados resultados",
+                "paginate": {
+                    "first": "Primeiro",
+                    "last": "Último",
+                    "next": "Seguinte",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": ordem crescente",
+                    "sortDescending": ": ordem decrescente"
+                }
+            }
+        });
+    });
+   
+    
+        </script>
+{% endblock %}

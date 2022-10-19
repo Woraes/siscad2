@@ -1,0 +1,47 @@
+{% extends 'pages/modelo-sis.html' %}
+{% load static %}
+
+{%block titulo%} 
+<title>Lista Colaboradores </title>
+{% endblock %}
+
+
+{%block conteudo%}
+<div class="card">
+    <div class="card-header"><h2>Olá, Bem Vindo  {{user.username}}.to</h2></div>
+    <div class="card-body">
+      <p class="card-text"><h4>Lista de Colaboradores</h4></p>
+      <a href="{% url 'colaborador_new'%}" class="btn btn-primary"><i class="bi bi-file-earmark-plus-fill"> Novo Cadastro</i></a>
+    </div>
+    <div class="table-responsive-lg">
+        <table class="table table-striped">
+            <tr>
+                <th>Nome </th>
+                <th>CPF</th>
+                <th>Status</th>
+                <th>Servidor</th>
+                <th>Opções</th>
+            </tr>
+            {%for colaborador in object_list%}
+            <tr>
+                <td>{{colaborador.nome}}</td>
+                <td>{{colaborador.cpf}}</td>
+                <td>{{colaborador.status}}</td>
+                <td>{{colaborador.criadopor}}</td>
+                <td>
+                    <a href="{% url 'colaborador_update' colaborador.id %}"class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                    <a href="{% url 'colaborador_delete' colaborador.id%}"class="btn btn-danger" ><i class="bi bi-trash"></i></a>                 
+                </td>
+            </tr>
+            {%empty%}
+            <tr>
+                <td>Nenhum colaborador Registrado</td>
+            </tr>
+
+            {%endfor%}
+        </table>
+
+
+
+</div>  
+{% endblock %}    

@@ -1,0 +1,20 @@
+{% include 'partials/header.html' %}
+    <body>
+   
+    
+
+    
+        {%block conteudo%}
+
+
+        <h1>Função</h1>
+ <form action="{% url 'teste' %}" method="get">
+ <input name="teste" type="submit">
+ </form>
+    
+        {% endblock %}
+   
+   
+    
+    </body>
+{% include 'partials/footer.html' %}

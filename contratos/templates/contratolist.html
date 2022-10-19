@@ -1,0 +1,47 @@
+{% extends 'pages/modelo-sis.html' %}
+{% load static %}
+
+{%block titulo%} 
+<title>Lista Contratos </title>
+{% endblock %}
+
+
+{%block conteudo%}
+<div class="card">
+    <div class="card-header"><h2>Olá, Bem Vindo  {{user.username}}</h2></div>
+    <div class="card-body">
+      <p class="card-text"><h4>Lista de Contratos</h4></p>
+      <a href="{% url 'contrato_new'%}" class="btn btn-primary"><i class="bi bi-file-earmark-plus-fill"> Novo Cadastro</i></a>
+    </div>
+    <div class="table-responsive-lg">
+        <table class="table table-striped">
+            <tr>
+                <th>Nome </th>
+                <th>Unidade</th>
+                <th>Matrícula</th>
+                <th>Contrato</th>
+                <th>Opções</th>
+            </tr>
+            {%for contrato in object_list%}
+            <tr>
+                <td>{{contrato.colaborador}}</td>
+                <td>{{contrato.unidade}}</td>
+                <td>{{contrato.matricula}}</td>
+                <td>{{contrato.contrato}}</td>
+                <td>
+                    <a href="{% url 'contrato_update' contrato.id %}"class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                    <a href="{% url 'contrato_delete' contrato.id%}"class="btn btn-danger" ><i class="bi bi-trash"></i></a>                  
+                </td>
+            </tr>
+            {%empty%}
+            <tr>
+                <td>Nenhum contrato Registrado</td>
+            </tr>
+
+            {%endfor%}
+        </table>
+
+
+
+</div>  
+{% endblock %}    

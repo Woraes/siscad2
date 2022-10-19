@@ -1,0 +1,48 @@
+{% extends 'pages/modelo-sis.html' %}
+{% load static %}
+
+{%block titulo%} 
+<title>Lista de Usuários no Sistema </title>
+{% endblock %}
+
+
+
+{%block conteudo%}
+<div class="card">
+    <div class="card-header"><h2>Olá, Bem Vindo  {{user.username}} - {{user.groups.all.0.name}}</h2></div>
+    <div class="card-body">
+      <p class="card-text"><h4>Lista de Usuários no Sistema </h4></p>
+   
+      {% comment %} <a href="{% url 'pessoa_new'%}" class="btn btn-primary"><i class="bi bi-file-earmark-plus-fill"></i> Cadastrar</a>
+      <a href="{% url 'pessoa_new'%}" class="btn btn-primary"><i class="bi bi-file-earmark-plus-fill"></i> Gerar Lista</a> {% endcomment %}
+  
+    </div>
+    <div class="table-responsive-lg">
+        <table class="table table-striped">
+            <tr>
+                <th>Nome </th>
+                <th>Telefone</th>
+                <th>Opções</th>
+            </tr>
+            {%for usuario in object_list %}
+            <tr>
+                <td>{{username}}</td>
+                <td>{{user.groups}}</td>
+                <td>
+                    {% comment %} <a href="{% url 'pessoa_update' pessoa.id %}"class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                    <a href="{% url 'pessoa_delete' pessoa.id%}"class="btn btn-danger" ><i class="bi bi-trash"></i></a>                  {% endcomment %}
+                </td>
+                <td>{{teste}}</td>
+            </tr>
+            {%empty%}
+            <tr>
+                <td>Nenhum Setor Registrado</td>
+            </tr>
+
+            {%endfor%}
+        </table>
+
+
+
+</div>  
+{% endblock %}    

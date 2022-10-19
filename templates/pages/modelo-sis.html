@@ -1,0 +1,299 @@
+{% load static %}
+
+<!doctype html>
+<html lang="pt-br" class="h-100">
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="SIS.CAS">
+    <meta name="author" content="William de Moraes">
+    {% block titulo %}
+    <title>:: Sis.Cas ::</title>
+    {% endblock %}
+
+    <!-- Ícone do favicon -->
+    <link href="{% static 'img/favicon.png' %}" rel="shortcut icon" type="image/x-icon" />
+
+
+    <!-- Importação do Bootstrap 4 e do Font awesome -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@popperjs/core@2">
+    
+    {% comment %} <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> {% endcomment %}
+      
+    <!-- Bloco destinado aos estilos para cada página -->
+    {% block styles %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" name="icones">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    {% comment %} <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet"> {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/bootstrap.min.css '%}"> {% endcomment %}
+    
+    
+
+    <!-- Importação do Datatables -->
+
+    <!-- Ícone na barra de abas -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+
+
+ <!-- CSS adicional -->
+ <link href="{% static 'css/sis.css' %}" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/af-2.4.0/b-2.2.3/b-html5-2.2.3/b-print-2.2.3/sb-1.3.4/sp-2.0.2/datatables.min.css"/> {% comment %} <link href="{% static 'css/datatables.min.css' %}" rel="stylesheet"> {% endcomment %}
+
+
+
+    {% endblock %}
+
+</head>
+
+<body class="d-flex flex-column h-100">
+    <main role="main" class="flex-shrink-0">
+
+
+        <!-- Bloco com a logo da cidade -->
+        {% comment %} {% block logo %}
+        <div class="container-fluid bg-white">
+            <div class="container border-bottom border-light p-3">
+                <img src="{% static 'img/sistema.gif' %}" alt="" style="max-height: 65px;" class="img-fluid">
+            </div>
+
+        </div> 
+        {% endblock %} {% endcomment %}
+
+
+        <!-- Bloco com o menu principal -->
+        {% block menu %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-sis font-115 shadow">
+
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="{% static 'img/sistema.gif' %}" height="40" alt="">   SisCad
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav mr-auto">
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">
+                                
+                                <i class="bi bi-x-diamond"> </i>
+                                Início
+                            </a>
+                        </li>
+
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle "  href="#" id="navbarDropdownMenuLink"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-clipboard-check"> </i>
+                                Cadastros
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                                <a class="dropdown-item" href="{% url 'colaborador_list'%}">Colaborador</a>
+                                <a class="dropdown-item" href="{% url 'contrato_list'%}">Contrato</a>
+                                <a class="dropdown-item" href="">Anexar Documento</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'setor_list' %}">Setores</a>
+                                
+                                <a class="dropdown-item" href="{% url 'unidade_list' %}">Unidades</a>
+                                <a class="dropdown-item" href="">Status</a>
+                                <a class="dropdown-item" href="">Situações</a>
+                                <a class="dropdown-item" href="">Classes</a>
+                                <a class="dropdown-item" href="">Progressões</a>
+                                <a class="dropdown-item" href="">Campos</a>
+                                <a class="dropdown-item" href="">Atividades</a>
+                                <a class="dropdown-item" href="{% url 'pessoa_list' %}">Pessoas</a>
+
+                            </div>
+                        </li>
+                   
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle "  href="#" id="navbarDropdownMenuLink"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-clipboard-check"> </i>
+                                Menssagem
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                                <a class="dropdown-item" href="{% url 'pessoa_list'%}">Pessoas</a>
+                                <a class="dropdown-item" href="{% url 'geralista_list'%}">Menssagem</a>
+                                <a class="dropdown-item" href="{% url 'painelexe'%}">Gerar Lista</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'execut' %}">Envio</a>
+                                
+                  
+
+                            </div>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'sobre' %}">
+                                <i class="bi bi-file-person"></i>
+                                Sobre
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'ajuda' %}">
+                                <i class="bi bi-question-diamond"></i>
+                                Ajuda
+                            </a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                    <ul class="navbar-nav">
+
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-person-bounding-box"></i>
+                                <span id="username">{{ request.user }}-{{user.groups.all.0.name }}</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{%url 'perfil_update'%}">
+                                    <i class="bi bi-clipboard-check"></i>
+                                    Meus dados</a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="bi bi-exclamation-circle"></i>
+                                    Alterar senha</a>
+                                    <a class="dropdown-item" href="{% url 'registro'%}">
+                                        <i class="bi bi-exclamation-circle"></i>
+                                        Registro</a>
+                                        <a class="dropdown-item" href="{% url 'paineladm'%}">
+                                            <i class="bi bi-exclamation-circle"></i>
+                                            Painel ADM</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout'%}">
+                                    <i class="bi bi-x-circle"></i>
+                                    Sair</a>
+                            </div>
+                        </li>
+                        {% else %}
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{%url 'registrar' %}">
+                                <i class="bi bi-award"></i>Registrar
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'login'%}">
+                                <i class="bi bi-door-open"></i>
+                                Login
+                            </a>
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+
+                <!-- fim do container -->
+            </div>
+        </nav>
+        {% endblock %}
+
+
+        <!-- Bloco de conteúdo -->
+        <div class="container py-5">
+            {% block conteudo %}
+            <div class="card">
+                <div class="card-header">
+                  modelo conteudo
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Conteudoaooa</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            {% endblock %}
+        </div>
+
+    </main>
+
+    <footer class="mt-auto">
+
+        <!-- Bloco acima do rodapé com links -->
+        {% block rodape-links %}
+        <div class="container-fluid bg-sis text-white p-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <h5>O Município</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Link 1</a></li>
+                            <li><a href="#" class="text-white">Link 2</a></li>
+                            <li><a href="#" class="text-white">Link 3</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm">
+                        <h5>Serviços</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Link 1</a></li>
+                            <li><a href="#" class="text-white">Link 2</a></li>
+                            <li><a href="#" class="text-white">Link 3</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm">
+                        <h5>Acesso rápido</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Anexar Documento</a></li>
+                            <li><a href="#" class="text-white">Link 2</a></li>
+                            <li><a href="#" class="text-white">Link 3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+
+        <!-- Rodapé -->
+        {% block rodape %}
+        <div class="container-fluid bg-light text-center p-3">
+            <div class="row">
+                <div class="col-md-4 mx-auto text-center">
+                    <img src="{% static 'img/sistema.gif' %}" height="48" class="float-left" alt="">
+                    <p>
+                        <span class="lead">Sistema de Cadastros</span><br>
+                        <span>Desenvolvido por William de Moraes</span>
+                    </p>
+                </div>
+                <!-- <div class="col-md text-left">
+                    <img src="{% static 'img/sis.png' %}" height="100" alt="">
+                </div> -->
+
+                </p>
+            </div>
+            {% endblock %}
+
+    </footer>
+
+
+ 
+
+ <!-- Importação do JS -->
+    {% comment %} <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script> {% endcomment %}
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    {% comment %} <script src="{% static 'js/popper.js' %}"></script> {% endcomment %}
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% comment %} <script src="{% static 'js/bootstrap.js' %}"></script> {% endcomment %}
+    <script src="{% static 'js/jquery.mask.js' %}"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.1/af-2.4.0/b-2.2.3/b-html5-2.2.3/b-print-2.2.3/sb-1.3.4/sp-2.0.2/datatables.min.js"></script>
+    {% comment %} <script src="{% static 'js/datatables.min.js' %}"></script> {% endcomment %}
+
+    
+{% block scripts %}
+
+{% endblock %}
+
+</body>
+
+</html>

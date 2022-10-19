@@ -1,0 +1,31 @@
+{% extends 'pages/modelo-sis.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+
+
+{%block title%} {% endblock %}
+
+
+
+{%block conteudo%}
+
+<div class="card">
+    <div class="card-header"><h1>Login</h1></div>
+    <div class="card-body-login">
+      <p class="card-text-login">Sistema de Cadastros</p>
+    </div>
+    <form class="form-login" method="post">
+    {% csrf_token %}
+    <div class="row g-4">
+    {{form|crispy }}
+    <button type="submit" class="btn btn-success">Login</button>
+    </div>
+    
+    
+    </form>
+</div>
+
+{% endblock %}    
+

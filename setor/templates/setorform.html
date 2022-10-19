@@ -1,0 +1,30 @@
+{% extends 'pages/modelo-sis.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block titulo %}
+<title>Cadastro Setor </title>
+{% endblock  %}
+
+{% block conteudo %}
+<div class="card">
+    <div class="card-header">
+      <h3>Cadastro de Setor</h3>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Prencha os campos obrigatórios.</h5>
+      
+      <form action="" method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+      
+      <p class="card-text">Após prencher clique em cadastrar.</p>
+      
+      <button class="btn btn-primary" type="submit">Cadastrar</button>
+      <a href="{% url 'setor_list'%}" class="btn btn-secondary">Cancelar</a>
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
+{% endblock conteudo %}

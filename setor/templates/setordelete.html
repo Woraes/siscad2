@@ -1,0 +1,38 @@
+{% extends 'pages/modelo-sis.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{%block titulo%} <title>Deletar Setor</title>{% endblock %}  
+
+
+{%block conteudo%}
+<h1>Deletar o Registro de Setor ?
+<h3>Nome: ({{setor.nome}}) </h3>
+<br>
+<h3>Sigla: {{setor.sigla}}</h3>
+<br>
+<h6>Deseja confirmar para deletar ?</h6>
+
+<form method='post' enctype='multipart/form-data'>
+    {% csrf_token %}
+    
+
+
+    <button type="submit" class="btn btn-warning">Confirmar</button> 
+    <a href="{%url 'setor_list'%}" class="btn btn-dark">Cancelar</a></button>  
+</form>
+
+
+
+   
+
+
+
+
+
+
+{% endblock %}   
+    
+
+

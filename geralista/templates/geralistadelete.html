@@ -1,0 +1,62 @@
+{% extends 'pages/modelo-sis.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{%block titulo%} <title>Deletar Menssagem</title>{% endblock %}  
+
+
+{%block conteudo%}
+<h1>Deletar o Registro dessa Menssagem ?
+<h3>Título: ({{geralista.titulo}}) </h3>
+<br>
+<h3>Menssagem: ({{geralista.menssagem}}) </h3>
+<br>
+{% if geralista.arquivo1.url != " " %}
+<h4>Arquivo1: ({{geralista.arquivo1.url}})</h4>
+{% else %}
+<h4>Arquivo1: Não Contém arquivo</h4>
+{% endif %}
+<hr>
+
+{% if geralista.arquivo2.url != " " %}
+<h4>Arquivo2: ({{geralista.arquivo2.url}})</h4>
+{% else %}
+<h4>Arquivo2: Não Contém arquivo</h4>
+{% endif %}
+<hr>
+
+
+{% if geralista.arquivo3.url != " " %}
+<h4>Arquivo3: ({{geralista.arquivo3.url}})</h4>
+{% else %}
+<h4>Arquivo3: Não Contém arquivo</h4>
+{% endif %}
+<hr>
+<h3>Criado por: {{geralista.criadopor}}</h3>
+<br>
+
+<h6>Deseja confirmar para deletar ?</h6>
+
+<form method='post' enctype='multipart/form-data'>
+    {% csrf_token %}
+    
+
+
+    <button type="submit" class="btn btn-warning">Confirmar</button> 
+    <a href="{%url 'geralista_list'%}" class="btn btn-dark">Cancelar</a></button>  
+</form>
+
+
+
+   
+
+
+
+
+
+
+{% endblock %}   
+    
+
+

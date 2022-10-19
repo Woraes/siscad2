@@ -1,0 +1,40 @@
+{% extends 'pages/modelo-sis.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{%block titulo%} <title>Deletar Colaborador</title>{% endblock %}  
+
+
+{%block conteudo%}
+<h1>Deletar o Registro de Colaborador ?
+<h3>Nome: ({{colaborador.nome}}) </h3>
+<br>
+<h3>Status: {{colaborador.status}}</h3>
+<br>
+<h3>CPF: {{colaborador.cpf}}</h3>
+<br>
+<h6>Deseja confirmar para deletar ?</h6>
+
+<form method='post' enctype='multipart/form-data'>
+    {% csrf_token %}
+    
+
+
+    <button type="submit" class="btn btn-warning">Confirmar</button> 
+    <a href="{%url 'colaborador_list'%}" class="btn btn-dark">Cancelar</a></button>  
+</form>
+
+
+
+   
+
+
+
+
+
+
+{% endblock %}   
+    
+
+
