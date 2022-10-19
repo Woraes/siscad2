@@ -40,7 +40,7 @@ import pandas as pd
 import urllib.parse
 from django.views.generic import TemplateView
 from django.db import models
-# from webdriver_manager.chrome import ChromeDriverManager
+
 
 
 
