@@ -8,13 +8,13 @@
 
 {%block conteudo%}
 <div class="card">
-    <div class="card-header"><h2>Olá, Bem Vindo  {{user.username}}</h2></div>
+    <div class="card-header"><h2>Olá, Bem Vindo !!!  {{user.username}}</h2></div>
     <div class="card-body">
       <p class="card-text"><h4>Painel de Acompanhamento</h4></p>
       {% comment %} <a href="{% url 'colaborador_new'%}" class="btn btn-primary"><i class="bi bi-file-earmark-plus-fill"> Novo Cadastro</i></a> {% endcomment %}
     </div>
-    <a href="{%url 'export'%}">teste</a>
-    <a href="{%url 'juntar'%}">Juntar listas teste</a>
+    <a href="{%url 'export'%}" class="btn btn-warning">teste 1 um</a>
+    <a href="{%url 'juntar'%}" class="btn btn-warning" >Juntar listasteste</a>
 
 
 
