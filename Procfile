@@ -1,1 +1,1 @@
-web: gunicorn smsrh.wsgi --log-file -
+web: gunicorn app:smsrh.wsgi
