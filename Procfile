@@ -1,1 +1,1 @@
-web: gunicorn app:smsrh.wsgi
+web:gunicorn smsrh.wsgi
