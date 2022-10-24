@@ -71,7 +71,7 @@
 
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="{% static 'img/sistema.gif' %}" height="40" alt="">   SisCad
+                    <img src="{% static 'img/saude.gif' %}" height="60" alt="">   Painel Saúde
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +115,7 @@
                             </div>
                         </li>
                    
-                        <li class="nav-item dropdown">
+                        {% comment %} <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle "  href="#" id="navbarDropdownMenuLink"
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="bi bi-clipboard-check"> </i>
@@ -132,7 +132,7 @@
                   
 
                             </div>
-                        </li>
+                        </li> {% endcomment %}
                         <li class="nav-item ">
                             <a class="nav-link" href="{% url 'sobre' %}">
                                 <i class="bi bi-file-person"></i>
